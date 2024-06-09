@@ -1,3 +1,4 @@
+// Package pushgateway
 package pushgateway
 
 import (
