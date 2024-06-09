@@ -1,6 +1,5 @@
 FROM golang:1.22.1 AS build-env
 
-ENV GOPROXY https://goproxy.cn,direct
 WORKDIR /go/src/github.com/xinzhanguo/pushgateway
 COPY . /go/src/github.com/xinzhanguo/pushgateway
 RUN go mod download
