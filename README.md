@@ -7,7 +7,7 @@ new promethues pushgateway
 replace [prom/pushgateway](https://github.com/prometheus/pushgateway)
 
 
-used low memerey, don't OOM
+low Memory, don't OOM
 
 ```
 - job_name: pushgateway
