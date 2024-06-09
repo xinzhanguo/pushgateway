@@ -26,13 +26,15 @@ func New() *P {
 
 // Set store metrics data
 func (p *P) Set(job, instance string, data []byte) {
+	entersep := []byte("#")[0]
+	bracketsep := []byte("}")
 	lines := bytes.Split(data, []byte("\n"))
 	metrics := ""
 	for _, line := range lines {
-		if len(line) == 0 || line[0] == []byte("#")[0] {
+		if len(line) == 0 || line[0] == entersep {
 			continue
 		}
-		b := bytes.Split(line, []byte("}"))
+		b := bytes.Split(line, bracketsep)
 		if len(b) != 2 {
 			continue
 		}
