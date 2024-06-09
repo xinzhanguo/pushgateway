@@ -37,6 +37,6 @@ EOF
 cat metrics.txt | curl --data-binary @- http://localhost:9091/metrics/job/$jobname/instance/$nodeip
 
 # get metrics
-http://localhost:9091/metrics
+curl http://localhost:9091/metrics
 
 ```
