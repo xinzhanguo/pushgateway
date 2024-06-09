@@ -27,7 +27,7 @@ func New() *P {
 // Set store metrics data
 func (p *P) Set(job, instance string, data []byte) {
 	entersep := []byte("#")[0]
-	bracketsep := []byte("}")
+	bracketsep := []byte("} ")
 	lines := bytes.Split(data, []byte("\n"))
 	metrics := ""
 	for _, line := range lines {
@@ -38,7 +38,7 @@ func (p *P) Set(job, instance string, data []byte) {
 		if len(b) != 2 {
 			continue
 		}
-		metric := fmt.Sprintf("%s,exported_instance=\"%s\",exported_job=\"%s\"}%s\n", b[0], instance, job, b[1])
+		metric := fmt.Sprintf("%s,exported_instance=\"%s\",exported_job=\"%s\"} %s\n", b[0], instance, job, b[1])
 		metrics += metric
 	}
 	p.cache.Set(job+instance, metrics, 1*time.Minute)
