@@ -21,6 +21,7 @@ func New() *P {
 	cache := ttlcache.New[string, string](
 		ttlcache.WithTTL[string, string](1 * time.Minute),
 	)
+	go cache.Start() // starts automatic expired item deletion
 	return &P{cache: cache}
 }
 
